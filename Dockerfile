@@ -4,6 +4,7 @@ FROM ubuntu:20.04
 RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get -y install tzdata
 RUN <<EOF
     apt-get update
+    apt-get upgrade -y
     apt-get install -y \
         openssh-server  \
         sudo \
@@ -36,7 +37,8 @@ RUN <<EOF
         tar \
         tree \
         wget \
-        mpich
+        mpich \
+        bat
     apt-get clean
     rm -rf /var/lib/apt/lists/*
 EOF

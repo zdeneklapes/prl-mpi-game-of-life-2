@@ -18,7 +18,7 @@
 #include <string>
 
 #define DEBUG 0
-#define DEBUG_LITE 0
+#define DEBUG_LITE 1
 #define DEBUG_PRINT_LITE(fmt, ...) \
             do { if (DEBUG_LITE) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
 #define DEBUG_PRINT(fmt, ...) \
@@ -159,7 +159,7 @@ void update_cell_state(Program<void> *program, int row, int col, std::vector<std
         std::cerr << "Invalid cell state: " << (*program->grid)[row][col] << std::endl;
         program->die();
     }
-    DEBUG_PRINT_LITE("process_id: %d, row: %d, col: %d, alive_neighbors: %d, current_state: %d, new_state: %d\n", program->process_id, row, col, alive_neighbors, program->grid->at(row).at(col), new_state);
+//    DEBUG_PRINT_LITE("process_id: %d, row: %d, col: %d, alive_neighbors: %d, current_state: %d, new_state: %d\n", program->process_id, row, col, alive_neighbors, program->grid->at(row).at(col), new_state);
     next_grid[row][col] = new_state;
 }
 
@@ -201,6 +201,11 @@ void print_grid(Program<void> *program) {
  */
 void run_simulation(Program<void> *program) {
     int nrows = program->grid->size();
+    int process_count = program->processes;
+    if (nrows < process_count) {
+        process_count = nrows;
+    }
+
     int ncols = program->grid->at(0).size();
     std::vector<std::vector<int>> next_grid(nrows, std::vector<int>(ncols, DEAD));
 
@@ -208,22 +213,26 @@ void run_simulation(Program<void> *program) {
     copy_grid(*program->grid, next_grid);
 
     // determine rows per process
-    int rows_per_process = nrows / program->processes;
+    int rows_per_process = nrows / process_count;
     int start_row = program->process_id * rows_per_process;
-    int end_row = (program->process_id == program->processes - 1) ? nrows - 1 : start_row + rows_per_process - 1;
+    int end_row = (program->process_id == process_count - 1) ? nrows - 1 : start_row + rows_per_process - 1;
 
     // constants for clarity in communication
     const int UP = 0;
     const int DOWN = 1;
 
     bool is_first_process = program->process_id == 0;
-    bool is_last_process = program->process_id == program->processes - 1;
+    bool is_last_process = program->process_id == process_count - 1;
     bool is_middle_process = !is_first_process && !is_last_process;
 
     MPI_Request send_requests[2];
     MPI_Request recv_requests[2];
 
     for (int step = 0; step < program->steps; ++step) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (program->process_id >= nrows) {
+            continue;
+        }
         for (int row = start_row; row <= end_row; ++row) {
             for (int col = 0; col < ncols; ++col) {
                 update_cell_state(program, row, col, next_grid);
@@ -234,7 +243,7 @@ void run_simulation(Program<void> *program) {
 
         if (is_first_process){
             // exchange data with process above
-            int last_process = program->processes - 1;
+            int last_process = process_count - 1;
             MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, last_process, DOWN, MPI_COMM_WORLD, &send_requests[UP]);
             MPI_Irecv(&((*program->grid)[nrows-1][0]), ncols, MPI_INT, last_process, UP, MPI_COMM_WORLD, &recv_requests[UP]);
 
@@ -263,10 +272,11 @@ void run_simulation(Program<void> *program) {
             MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, first_process, UP, MPI_COMM_WORLD, &send_requests[DOWN]);
             MPI_Irecv(&((*program->grid)[0][0]), ncols, MPI_INT, first_process, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
         }
-
-        MPI_Barrier(MPI_COMM_WORLD);
     }
 
+    if (program->process_id >= nrows) {
+        return;
+    }
     for (int row = start_row; row <= end_row; ++row) {
         fprintf(stdout, "%d: ", program->process_id);
         for (int col = 0; col < ncols; ++col) {
@@ -288,7 +298,6 @@ int main(int argc, char *argv[]) {
     auto program = new Program<void>(argc, argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &program->process_id);
     MPI_Comm_size(MPI_COMM_WORLD, &program->processes);
-
     MPI_Barrier(MPI_COMM_WORLD);
     run_simulation(program);
     MPI_Barrier(MPI_COMM_WORLD);

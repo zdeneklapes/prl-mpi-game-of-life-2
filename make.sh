@@ -155,37 +155,4 @@ function main() {
         shift
     done
 }
-
-function prune_volumes() {
-    # Stop and remove all containers
-    docker stop $(docker ps -aq)
-    docker rm $(docker ps -aq)
-
-    # Remove all volumes: not just dangling ones
-    for i in $(docker volume ls --format json | jq -r ".Name"); do
-        docker volume rm -f ${i}
-    done
-}
-
-function prune_not_images() {
-    # Stop and remove all containers
-    docker stop $(docker ps -aq)
-    docker system prune --force --volumes
-
-    # Remove all volumes: not just dangling ones
-    for i in $(docker volume ls --format json | jq -r ".Name"); do
-        docker volume rm -f ${i}
-    done
-}
-
-function prune() {
-    # Stop and remove all containers
-    docker stop $(docker ps -aq)
-    docker system prune --all --force --volumes
-
-    # Remove all volumes: not just dangling ones
-    for i in $(docker volume ls --format json | jq -r ".Name"); do
-        docker volume rm -f ${i}
-    done
-}
 main "$@"

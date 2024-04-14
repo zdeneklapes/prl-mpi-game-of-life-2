@@ -171,24 +171,24 @@ void run_simulation(Program<void> *program) {
             }
         }
 
-        // Update the current grid to the next grid
-        std::swap(*program->grid, next_grid);
+        // Update the current grid
+        for (int i = 0; i < nrows; i++) {
+            for (int j = 0; j < ncols; j++) {
+                (*program->grid)[i][j] = next_grid[i][j];
+            }
+        }
 
         if (is_first_process) {
             auto end_row_address_current = &((*program->grid)[end_row][0]);
             auto end_row_address_previous = &((*program->grid)[nrows - 1][0]);
-            MPI_Isend(end_row_address_current, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD,
-                      &send_requests[DOWN]);
-            MPI_Irecv(end_row_address_previous, ncols, MPI_INT, num_processes - 1, DOWN, MPI_COMM_WORLD,
-                      &recv_requests[DOWN]);
+            MPI_Isend(end_row_address_current, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD, &send_requests[DOWN]);
+            MPI_Irecv(end_row_address_previous, ncols, MPI_INT, num_processes - 1, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
 
             auto start_row_address_current = &((*program->grid)[start_row][0]);
             auto index = (my_rank + 1) * rows_per_process;
             auto start_row_address_next = &((*program->grid)[index][0]);
-            MPI_Isend(start_row_address_current, ncols, MPI_INT, num_processes - 1, UP, MPI_COMM_WORLD,
-                      &send_requests[UP]);
-            MPI_Irecv(start_row_address_next, ncols, MPI_INT, (my_rank + 1) % num_processes, UP, MPI_COMM_WORLD,
-                      &recv_requests[UP]);
+            MPI_Isend(start_row_address_current, ncols, MPI_INT, num_processes - 1, UP, MPI_COMM_WORLD, &send_requests[UP]);
+            MPI_Irecv(start_row_address_next, ncols, MPI_INT, (my_rank + 1) % num_processes, UP, MPI_COMM_WORLD, &recv_requests[UP]);
         } else if (is_middle_process) {
             auto start_row_address_current = &((*program->grid)[start_row][0]);
             auto start_row_address_previous = &((*program->grid)[start_row - 1][0]);
@@ -208,10 +208,8 @@ void run_simulation(Program<void> *program) {
 
             auto end_row_address_current = &((*program->grid)[end_row][0]);
             auto end_row_address_next = &((*program->grid)[0][0]);
-            MPI_Isend(end_row_address_current, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD,
-                      &send_requests[DOWN]);
-            MPI_Irecv(end_row_address_next, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD,
-                      &recv_requests[DOWN]);
+            MPI_Isend(end_row_address_current, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD, &send_requests[DOWN]);
+            MPI_Irecv(end_row_address_next, ncols, MPI_INT, (my_rank + 1) % num_processes, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
         }
 
         // Synchronize all processes
@@ -238,8 +236,7 @@ int main(int argc, char *argv[]) {
     DEBUG_PRINT_LITE_PROCESS(0, "process_id: %d\n", program->process_id);
     DEBUG_PRINT_LITE_PROCESS(0, "filename: %s\n", program->filename);
     DEBUG_PRINT_LITE_PROCESS(0, "steps: %d\n", program->steps);
-    DEBUG_PRINT_LITE_PROCESS(0, "grid (rows x columns): %ld x %ld\n", program->grid->size(),
-                             program->grid->at(0).size());
+    DEBUG_PRINT_LITE_PROCESS(0, "grid (rows x columns): %ld x %ld\n", program->grid->size(), program->grid->at(0).size());
     // print whole grid
     print_grid(program);
     DEBUG_PRINT_LITE_PROCESS(0, "processes: %d\n", program->processes);

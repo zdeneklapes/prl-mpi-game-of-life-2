@@ -12,8 +12,8 @@ function run_mpi() {
     proc=3
     build_mpi || die "build failed"
     program="life"
-    echo "Pocet procesoru: $proc; pocet kroku: $steps"
-    echo "================"
+#    echo "Pocet procesoru: $proc; pocet kroku: $steps"
+#    echo "================"
     mpirun -np "$proc" ./"$program" "$game_input" "$steps" || die "mpirun failed"
 }
 

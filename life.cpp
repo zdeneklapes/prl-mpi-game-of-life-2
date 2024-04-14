@@ -16,6 +16,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <cstring>
+
 
 #define DEBUG 0
 #define DEBUG_LITE 1
@@ -33,11 +35,67 @@
 const int ALIVE = 1;
 const int DEAD = 0;
 
+void die() {
+    std::cerr << "Usage: ./life <path to the game field file> <number of steps>" << std::endl;
+    MPI_Abort(MPI_COMM_WORLD, 1);
+    exit(1);
+}
+
+std::vector<std::vector<int>>* get_grid_from_file(char *filename) {
+    MPI_File mpi_file;
+    MPI_Status status;
+    int rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
+    // Open the file collectively
+    if (MPI_File_open(MPI_COMM_WORLD, filename, MPI_MODE_RDONLY, MPI_INFO_NULL, &mpi_file) != MPI_SUCCESS) {
+        if (rank == 0) {
+            std::cerr << "File not found: " << filename << std::endl;
+        }
+        die();
+    }
+
+    // find file size
+    MPI_Offset file_size;
+    MPI_File_get_size(mpi_file, &file_size);
+
+    // read the entire file into a buffer
+    char* buffer = new char[file_size + 1];
+    MPI_File_read_all(mpi_file, buffer, file_size, MPI_CHAR, &status);
+
+    // null-terminate the buffer
+    buffer[file_size] = '\0';
+
+    // close the file
+    MPI_File_close(&mpi_file);
+
+    // Now, each process has the whole file in memory. You can distribute parsing or parse conditionally based on rank.
+    auto grid = new std::vector<std::vector<int>>();
+    char* line = strtok(buffer, "\n");
+    while (line != nullptr) {
+        std::vector<int> row;
+        for (int i = 0; line[i] != '\0'; i++) {
+            if (line[i] == '0') {
+                row.push_back(0); // Dead cell
+            } else if (line[i] == '1') {
+                row.push_back(1); // Alive cell
+            }
+        }
+        grid->push_back(row);
+        line = strtok(nullptr, "\n");
+    }
+
+    // Clean up
+    delete[] buffer;
+
+    return grid;
+}
+
+
 /**
  * Program class
  * @tparam T
  */
-template<typename T>
 class Program {
 public:
     /**
@@ -49,32 +107,7 @@ public:
         if (argc != 3) { die(); }
         this->filename = argv[1];
 
-        // read file
-        std::ifstream file_stream(this->filename);
-        if (!file_stream.good()) {
-            std::cerr << "File not found: " << this->filename << std::endl;
-            die();
-        } else {
-            // parse input
-            std::string line;
-            this->grid = new std::vector<std::vector<int>>();
-            while (getline(file_stream, line)) {
-                std::vector<int> row;
-                for (char cell: line) {
-                    if (cell == '0') {
-                        row.push_back(0); // Dead cell
-                    } else if (cell == '1') {
-                        row.push_back(1); // Alive cell
-                    }
-                }
-                this->grid->push_back(row);
-            }
-            file_stream.close();
-        }
-        if (this->grid->empty()) {
-            std::cerr << "Empty grid" << std::endl;
-            die();
-        }
+        this->grid = get_grid_from_file(filename);
 
         // parse steps
         try {
@@ -94,11 +127,6 @@ public:
     /**
      * Error message and exit
      */
-    void die() {
-        std::cerr << "Usage: ./life <path to the game field file> <number of steps>" << std::endl;
-        MPI_Abort(MPI_COMM_WORLD, 1);
-        exit(1);
-    }
 
     char *filename = nullptr;
     int steps = 0;
@@ -116,7 +144,7 @@ public:
  * @param next_grid: Next grid
  * @return void
  */
-void update_cell_state(Program<void> *program, int row, int col, std::vector<std::vector<int>> &next_grid) {
+void update_cell_state(Program *program, int row, int col, std::vector<std::vector<int>> &next_grid) {
     int alive_neighbors = 0;
     int nrows = program->grid->size();
     int ncols = program->grid->at(0).size();
@@ -157,7 +185,7 @@ void update_cell_state(Program<void> *program, int row, int col, std::vector<std
         }
     } else {
         std::cerr << "Invalid cell state: " << (*program->grid)[row][col] << std::endl;
-        program->die();
+        die();
     }
 //    DEBUG_PRINT_LITE("process_id: %d, row: %d, col: %d, alive_neighbors: %d, current_state: %d, new_state: %d\n", program->process_id, row, col, alive_neighbors, program->grid->at(row).at(col), new_state);
     next_grid[row][col] = new_state;
@@ -184,7 +212,7 @@ void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>
  * @param program: Program
  * @return void
  */
-void print_grid(Program<void> *program) {
+void print_grid(Program *program) {
     for (int i = 0; i < program->grid->size(); i++) {
         for (int j = 0; j < program->grid->at(i).size(); j++) {
             fprintf(stdout, "%d", program->grid->at(i).at(j));
@@ -199,7 +227,7 @@ void print_grid(Program<void> *program) {
  * @param program: Program
  * @return void
  */
-void run_simulation(Program<void> *program) {
+void run_simulation(Program *program) {
     int nrows = program->grid->size();
     int process_count = program->processes;
     if (nrows < process_count) {
@@ -295,7 +323,7 @@ void run_simulation(Program<void> *program) {
  */
 int main(int argc, char *argv[]) {
     MPI_Init(&argc, &argv);
-    auto program = new Program<void>(argc, argv);
+    auto program = new Program(argc, argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &program->process_id);
     MPI_Comm_size(MPI_COMM_WORLD, &program->processes);
     MPI_Barrier(MPI_COMM_WORLD);

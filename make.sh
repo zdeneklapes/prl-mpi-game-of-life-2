@@ -95,7 +95,7 @@ function run_mpi() {
 
 function valgrind_mpi() {
     build_mpi || die "build_mpi failed"
-    valgrind --leak-check=yes mpirun -n 2 ./life ./tests/2-input-1-steps.txt 1
+    valgrind --leak-check=yes mpirun -n 2 ./life ./tests/1-input.txt 1
 }
 
 function rsync_to_server() {

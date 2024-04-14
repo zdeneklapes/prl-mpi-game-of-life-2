@@ -1,3 +1,16 @@
+/*
+ * Game of Life
+ * Author: Zdenek Lapes <lapes.zdenek@gmail.com> (xlapes02)
+ * Date: 2024-04-14
+ * Description: Parallel implementation of the Game of Life using MPI.
+ * Compile: mpic++ -o life life.cpp
+ * Run: mpirun -np <number of processes> ./life <path to the game field file> <number of steps>
+ *  <number of processes> accept any number of processes available on the system
+ *  <path to the game field file> is the path to the file with the initial state of the game field
+ *  <number of steps> is the number of steps the simulation should run
+ * Output: The state of the game field after the specified number of steps (stdout)
+ */
+
 #include <mpi.h>
 #include <iostream>
 #include <fstream>
@@ -20,9 +33,18 @@
 const int ALIVE = 1;
 const int DEAD = 0;
 
+/**
+ * Program class
+ * @tparam T
+ */
 template<typename T>
 class Program {
 public:
+    /**
+     * Constructor
+     * @param argc: Number of arguments
+     * @param argv: Arguments
+     */
     Program(int argc, char *argv[]) {
         if (argc != 3) { die(); }
         this->filename = argv[1];
@@ -69,6 +91,9 @@ public:
         }
     }
 
+    /**
+     * Error message and exit
+     */
     void die() {
         std::cerr << "Usage: ./life <path to the game field file> <number of steps>" << std::endl;
         MPI_Abort(MPI_COMM_WORLD, 1);
@@ -82,6 +107,15 @@ public:
     std::vector<std::vector<int>> *grid = nullptr;
 };
 
+/**
+ * Update cell state
+ *
+ * @param program: Program
+ * @param row: Row
+ * @param col: Column
+ * @param next_grid: Next grid
+ * @return void
+ */
 void update_cell_state(Program<void> *program, int row, int col, std::vector<std::vector<int>> &next_grid) {
     int alive_neighbors = 0;
     int nrows = program->grid->size();
@@ -129,6 +163,13 @@ void update_cell_state(Program<void> *program, int row, int col, std::vector<std
     next_grid[row][col] = new_state;
 }
 
+/**
+ * Copy grid
+ *
+ * @param from: From grid
+ * @param to: To grid
+ * @return void
+ */
 void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>> &to) {
     for (int i = 0; i < from.size(); i++) {
         for (int j = 0; j < from[i].size(); j++) {
@@ -137,6 +178,12 @@ void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>
     }
 }
 
+/**
+ * Print grid
+ *
+ * @param program: Program
+ * @return void
+ */
 void print_grid(Program<void> *program) {
     for (int i = 0; i < program->grid->size(); i++) {
         for (int j = 0; j < program->grid->at(i).size(); j++) {
@@ -146,6 +193,12 @@ void print_grid(Program<void> *program) {
     }
 }
 
+/**
+ * Run simulation
+ *
+ * @param program: Program
+ * @return void
+ */
 void run_simulation(Program<void> *program) {
     int nrows = program->grid->size();
     int ncols = program->grid->at(0).size();
@@ -223,6 +276,13 @@ void run_simulation(Program<void> *program) {
     }
 }
 
+/**
+ * Main function
+ *
+ * @param argc: Number of arguments
+ * @param argv: Arguments
+ * @return int
+ */
 int main(int argc, char *argv[]) {
     MPI_Init(&argc, &argv);
     auto program = new Program<void>(argc, argv);

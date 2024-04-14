@@ -9,7 +9,7 @@ function build_mpi() {
 }
 
 function run_mpi() {
-    proc=3
+    proc=3 # accept any number of processes available on the system
     build_mpi || die "build failed"
     program="life"
 #    echo "Pocet procesoru: $proc; pocet kroku: $steps"

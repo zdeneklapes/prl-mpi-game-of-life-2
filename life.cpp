@@ -220,13 +220,12 @@ int get_end_row(int process_id, int nrows, int process_count) {
 }
 
 /**
- * Print grid
+ * Print grid to stdout
  *
  * @param program: Program
  * @return void
  */
 void print_grid(Program *program) {
-    // wait here for the previous process to finish printing
     int nrows = program->grid->size();
     int ncols = program->grid->at(0).size();
     int start_row = get_start_row(program->process_id, nrows, program->processes);
@@ -235,18 +234,18 @@ void print_grid(Program *program) {
     auto buffer = new int[1];
     int tag = 0;
     int count = 0;
-    int previous_process = program->process_id - 1;
 
-    MPI_Recv(buffer, count, MPI_INT, previous_process, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    // wait here for the previous process to finish printing
+    if (program->process_id != 0) {
+        int previous_process = program->process_id - 1;
+        MPI_Recv(buffer, count, MPI_INT, previous_process, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
     for (int row = start_row; row <= end_row; ++row) {
         fprintf(stdout, "%d: ", program->process_id);
-        fflush(stdout);
         for (int col = 0; col < ncols; ++col) {
             fprintf(stdout, "%d", program->grid->at(row).at(col));
-            fflush(stdout);
         }
         fprintf(stdout, "%c", '\n');
-        fflush(stdout);
     }
 
     // send message to the next process that can print the next part of the grid

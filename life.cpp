@@ -41,7 +41,7 @@ void die() {
     exit(1);
 }
 
-std::vector<std::vector<int>>* get_grid_from_file(char *filename) {
+std::vector<std::vector<int>> *get_grid_from_file(char *filename) {
     MPI_File mpi_file;
     MPI_Status status;
     int rank;
@@ -60,7 +60,7 @@ std::vector<std::vector<int>>* get_grid_from_file(char *filename) {
     MPI_File_get_size(mpi_file, &file_size);
 
     // read the entire file into a buffer
-    char* buffer = new char[file_size + 1];
+    char *buffer = new char[file_size + 1];
     MPI_File_read_all(mpi_file, buffer, file_size, MPI_CHAR, &status);
 
     // null-terminate the buffer
@@ -71,7 +71,7 @@ std::vector<std::vector<int>>* get_grid_from_file(char *filename) {
 
     // Now, each process has the whole file in memory. You can distribute parsing or parse conditionally based on rank.
     auto grid = new std::vector<std::vector<int>>();
-    char* line = strtok(buffer, "\n");
+    char *line = strtok(buffer, "\n");
     while (line != nullptr) {
         std::vector<int> row;
         for (int i = 0; line[i] != '\0'; i++) {
@@ -206,6 +206,19 @@ void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>
     }
 }
 
+int get_start_row(int process_id, int nrows, int process_count) {
+    int rows_per_process = nrows / process_count;
+    int start_row = process_id * rows_per_process;
+    return start_row;
+}
+
+int get_end_row(int process_id, int nrows, int process_count) {
+    int rows_per_process = nrows / process_count;
+    int start_row = get_start_row(process_id, nrows, process_count);
+    int end_row = (process_id == process_count - 1) ? nrows - 1 : start_row + rows_per_process - 1;
+    return end_row;
+}
+
 /**
  * Print grid
  *
@@ -213,11 +226,32 @@ void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>
  * @return void
  */
 void print_grid(Program *program) {
-    for (int i = 0; i < program->grid->size(); i++) {
-        for (int j = 0; j < program->grid->at(i).size(); j++) {
-            fprintf(stdout, "%d", program->grid->at(i).at(j));
+    // wait here for the previous process to finish printing
+    int nrows = program->grid->size();
+    int ncols = program->grid->at(0).size();
+    int start_row = get_start_row(program->process_id, nrows, program->processes);
+    int end_row = get_end_row(program->process_id, nrows, program->processes);
+
+    auto buffer = new int[1];
+    int tag = 0;
+    int count = 0;
+    int previous_process = program->process_id - 1;
+
+    MPI_Recv(buffer, count, MPI_INT, previous_process, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    for (int row = start_row; row <= end_row; ++row) {
+        fprintf(stdout, "%d: ", program->process_id);
+        for (int col = 0; col < ncols; ++col) {
+            fprintf(stdout, "%d", program->grid->at(row).at(col));
+            fflush(stdout);
         }
         fprintf(stdout, "%c", '\n');
+        fflush(stdout);
+    }
+
+    // send message to the next process that can print the next part of the grid
+    if (program->process_id != program->processes - 1) {
+        int next_process = program->process_id + 1;
+        MPI_Send(buffer, count, MPI_INT, next_process, tag, MPI_COMM_WORLD);
     }
 }
 
@@ -241,9 +275,8 @@ void run_simulation(Program *program) {
     copy_grid(*program->grid, next_grid);
 
     // determine rows per process
-    int rows_per_process = nrows / process_count;
-    int start_row = program->process_id * rows_per_process;
-    int end_row = (program->process_id == process_count - 1) ? nrows - 1 : start_row + rows_per_process - 1;
+    int start_row = get_start_row(program->process_id, nrows, process_count);
+    int end_row = get_end_row(program->process_id, nrows, process_count);
 
     // constants for clarity in communication
     const int UP = 0;
@@ -269,48 +302,55 @@ void run_simulation(Program *program) {
 
         copy_grid(next_grid, *program->grid);
 
-        if (is_first_process){
+        if (is_first_process) {
             // exchange data with process above
             int last_process = process_count - 1;
-            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, last_process, DOWN, MPI_COMM_WORLD, &send_requests[UP]);
-            MPI_Irecv(&((*program->grid)[nrows-1][0]), ncols, MPI_INT, last_process, UP, MPI_COMM_WORLD, &recv_requests[UP]);
+            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, last_process, DOWN, MPI_COMM_WORLD,
+                      &send_requests[UP]);
+            MPI_Irecv(&((*program->grid)[nrows - 1][0]), ncols, MPI_INT, last_process, UP, MPI_COMM_WORLD,
+                      &recv_requests[UP]);
 
             // exchange data with process below
             int next_process = program->process_id + 1;
-            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, next_process, UP, MPI_COMM_WORLD, &send_requests[DOWN]);
-            MPI_Irecv(&((*program->grid)[end_row + 1][0]), ncols, MPI_INT, next_process, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
+            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, next_process, UP, MPI_COMM_WORLD,
+                      &send_requests[DOWN]);
+            MPI_Irecv(&((*program->grid)[end_row + 1][0]), ncols, MPI_INT, next_process, DOWN, MPI_COMM_WORLD,
+                      &recv_requests[DOWN]);
         } else if (is_middle_process) {
             // exchange data with process above
             int previous_process = program->process_id - 1;
-            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, previous_process, DOWN, MPI_COMM_WORLD, &send_requests[UP]);
-            MPI_Irecv(&((*program->grid)[start_row - 1][0]), ncols, MPI_INT, previous_process, UP, MPI_COMM_WORLD, &recv_requests[UP]);
+            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, previous_process, DOWN, MPI_COMM_WORLD,
+                      &send_requests[UP]);
+            MPI_Irecv(&((*program->grid)[start_row - 1][0]), ncols, MPI_INT, previous_process, UP, MPI_COMM_WORLD,
+                      &recv_requests[UP]);
 
             // exchange data with process below
             int next_process = program->process_id + 1;
-            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, next_process, UP, MPI_COMM_WORLD, &send_requests[DOWN]);
-            MPI_Irecv(&((*program->grid)[end_row + 1][0]), ncols, MPI_INT, next_process, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
+            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, next_process, UP, MPI_COMM_WORLD,
+                      &send_requests[DOWN]);
+            MPI_Irecv(&((*program->grid)[end_row + 1][0]), ncols, MPI_INT, next_process, DOWN, MPI_COMM_WORLD,
+                      &recv_requests[DOWN]);
         } else if (is_last_process) {
             // exchange data with process above
             int previous_process = program->process_id - 1;
-            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, previous_process, DOWN, MPI_COMM_WORLD, &send_requests[UP]);
-            MPI_Irecv(&((*program->grid)[start_row - 1][0]), ncols, MPI_INT, previous_process, UP, MPI_COMM_WORLD, &recv_requests[UP]);
+            MPI_Isend(&((*program->grid)[start_row][0]), ncols, MPI_INT, previous_process, DOWN, MPI_COMM_WORLD,
+                      &send_requests[UP]);
+            MPI_Irecv(&((*program->grid)[start_row - 1][0]), ncols, MPI_INT, previous_process, UP, MPI_COMM_WORLD,
+                      &recv_requests[UP]);
 
             // exchange data with process below
             int first_process = 0;
-            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, first_process, UP, MPI_COMM_WORLD, &send_requests[DOWN]);
-            MPI_Irecv(&((*program->grid)[0][0]), ncols, MPI_INT, first_process, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
+            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, first_process, UP, MPI_COMM_WORLD,
+                      &send_requests[DOWN]);
+            MPI_Irecv(&((*program->grid)[0][0]), ncols, MPI_INT, first_process, DOWN, MPI_COMM_WORLD,
+                      &recv_requests[DOWN]);
         }
     }
 
     if (program->process_id >= nrows) {
         return;
-    }
-    for (int row = start_row; row <= end_row; ++row) {
-        fprintf(stdout, "%d: ", program->process_id);
-        for (int col = 0; col < ncols; ++col) {
-            fprintf(stdout, "%d", program->grid->at(row).at(col));
-        }
-        fprintf(stdout, "%c", '\n');
+    } else {
+        print_grid(program);
     }
 }
 

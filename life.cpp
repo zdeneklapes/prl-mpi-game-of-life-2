@@ -240,6 +240,7 @@ void print_grid(Program *program) {
     MPI_Recv(buffer, count, MPI_INT, previous_process, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     for (int row = start_row; row <= end_row; ++row) {
         fprintf(stdout, "%d: ", program->process_id);
+        fflush(stdout);
         for (int col = 0; col < ncols; ++col) {
             fprintf(stdout, "%d", program->grid->at(row).at(col));
             fflush(stdout);

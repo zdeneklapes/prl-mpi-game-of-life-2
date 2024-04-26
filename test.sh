@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Wrap-around version of Game of Life
+
 game_input=$1
 steps=$2
 

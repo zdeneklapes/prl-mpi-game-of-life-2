@@ -2,7 +2,7 @@
  * Game of Life
  * Author: Zdenek Lapes <lapes.zdenek@gmail.com> (xlapes02)
  * Date: 2024-04-14
- * Description: Parallel implementation of the Game of Life using MPI.
+ * Description: Parallel implementation of the Game of Life using MPI. (Wrap-around)
  * Compile: mpic++ -o life life.cpp
  * Run: mpirun -np <number of processes> ./life <path to the game field file> <number of steps>
  *  <number of processes> accept any number of processes available on the system
@@ -20,7 +20,7 @@
 
 
 #define DEBUG 0
-#define DEBUG_LITE 1
+#define DEBUG_LITE 0
 #define DEBUG_PRINT_LITE(fmt, ...) \
             do { if (DEBUG_LITE) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
 #define DEBUG_PRINT(fmt, ...) \
@@ -228,30 +228,64 @@ int get_end_row(int process_id, int nrows, int process_count) {
 void print_grid(Program *program) {
     int nrows = program->grid->size();
     int ncols = program->grid->at(0).size();
+
+    // get the start and end rows of each process
     int start_row = get_start_row(program->process_id, nrows, program->processes);
     int end_row = get_end_row(program->process_id, nrows, program->processes);
+    int local_rows = end_row - start_row + 1;
 
-    auto buffer = new int[1];
-    int tag = 0;
-    int count = 0;
+    // prepare buffer for gathering grid data
+    std::vector<int> local_grid(local_rows * ncols);
 
-    // wait here for the previous process to finish printing
-    if (program->process_id != 0) {
-        int previous_process = program->process_id - 1;
-        MPI_Recv(buffer, count, MPI_INT, previous_process, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    }
-    for (int row = start_row; row <= end_row; ++row) {
-        fprintf(stdout, "%d: ", program->process_id);
-        for (int col = 0; col < ncols; ++col) {
-            fprintf(stdout, "%d", program->grid->at(row).at(col));
+    // fill local grid data
+    for (int i = 0; i < local_rows; ++i) {
+        for (int j = 0; j < ncols; ++j) {
+            local_grid[i * ncols + j] = program->grid->at(start_row + i).at(j);
         }
-        fprintf(stdout, "%c", '\n');
     }
 
-    // send message to the next process that can print the next part of the grid
-    if (program->process_id != program->processes - 1) {
-        int next_process = program->process_id + 1;
-        MPI_Send(buffer, count, MPI_INT, next_process, tag, MPI_COMM_WORLD);
+    // prepare to gather grids at the root process
+    std::vector<int> complete_grid;
+    std::vector<int> recv_counts(program->processes);
+    std::vector<int> displacements(program->processes);
+
+    // only the root process needs to allocate space for the complete grid
+    if (program->process_id == 0) {
+        complete_grid.resize(nrows * ncols);
+    }
+
+    // all processes must provide the count of elements they will send
+    MPI_Gather(&local_rows, 1, MPI_INT, recv_counts.data(), 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    // calculate displacements for each process at the root
+    if (program->process_id == 0) {
+        int offset = 0;
+        for (int i = 0; i < program->processes; ++i) {
+            displacements[i] = offset;
+            recv_counts[i] *= ncols;  // convert row count to element count
+            offset += recv_counts[i];
+        }
+    }
+
+    // gather all local grids to the root process using variable sizes
+    MPI_Gatherv(local_grid.data(), local_rows * ncols, MPI_INT,
+                complete_grid.data(), recv_counts.data(), displacements.data(), MPI_INT,
+                0, MPI_COMM_WORLD);
+
+    // only the root process prints the complete grid
+    if (program->process_id == 0) {
+        for (int row = 0; row < nrows; ++row) {
+            // get process that owns this row
+            int process_id = row / (nrows / program->processes);
+            if (process_id >= program->processes) {
+                process_id = program->processes - 1;
+            }
+            std::cout << process_id << ": ";
+            for (int col = 0; col < ncols; ++col) {
+                std::cout << complete_grid[row * ncols + col];
+            }
+            std::cout << std::endl;
+        }
     }
 }
 

@@ -374,10 +374,8 @@ void run_simulation(Program *program) {
 
             // exchange data with process below
             int first_process = 0;
-            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, first_process, UP, MPI_COMM_WORLD,
-                      &send_requests[DOWN]);
-            MPI_Irecv(&((*program->grid)[0][0]), ncols, MPI_INT, first_process, DOWN, MPI_COMM_WORLD,
-                      &recv_requests[DOWN]);
+            MPI_Isend(&((*program->grid)[end_row][0]), ncols, MPI_INT, first_process, UP, MPI_COMM_WORLD, &send_requests[DOWN]);
+            MPI_Irecv(&((*program->grid)[0][0]), ncols, MPI_INT, first_process, DOWN, MPI_COMM_WORLD, &recv_requests[DOWN]);
         }
     }
 

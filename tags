@@ -1,0 +1,315 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALIVE	life.cpp	/^const int ALIVE = 1;$/;"	v
+ALL_OBJ	others/Game-Of-Life/Makefile	/^ALL_OBJ := $(patsubst %.c, %.o, $(ALL_SRC))$/;"	m
+ALL_SRC	others/Game-Of-Life/Makefile	/^ALL_SRC := $(shell find . -type f -regex ".*\\.c")$/;"	m
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
+BDIR	others/Game-Of-Life/Makefile	/^BDIR := .\/build$/;"	m
+CC	others/Game-Of-Life/Makefile	/^CC := mpicc$/;"	m
+CFLAGS	others/Game-Of-Life/Makefile	/^CFLAGS := -O3 -fopenmp$/;"	m
+CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/app\/build$/;"	m
+CMAKE_BINARY_DIR	cmake-build-debug/Makefile	/^CMAKE_BINARY_DIR = \/tmp\/prl-mpi-game-of-life-2\/cmake-build-debug$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	cmake-build-debug/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/app$/;"	m
+CMAKE_SOURCE_DIR	cmake-build-debug/Makefile	/^CMAKE_SOURCE_DIR = \/tmp\/prl-mpi-game-of-life-2$/;"	m
+COMMON_OBJ	others/Game-Of-Life/Makefile	/^COMMON_OBJ := $(filter .\/common\/%.o, $(ALL_OBJ))$/;"	m
+COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_INTERNAL	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_INTERNAL /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^  # define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^  # define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
+CWD	others/Game-Of-Life/misc/vizualize.py	/^CWD = os.getcwd()$/;"	v
+CXX_STD	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#      define CXX_STD /;"	d	file:
+CXX_STD	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#    define CXX_STD /;"	d	file:
+CXX_STD	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define CXX_STD /;"	d	file:
+CXX_STD	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#      define CXX_STD /;"	d	file:
+CXX_STD	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#    define CXX_STD /;"	d	file:
+CXX_STD	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define CXX_STD /;"	d	file:
+C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT /;"	d	file:
+C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
+C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
+C_DIALECT	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT /;"	d	file:
+C_DIALECT	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
+C_DIALECT	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
+DEAD	life.cpp	/^const int DEAD = 0;$/;"	v
+DEBUG	life.cpp	/^#define DEBUG /;"	d	file:
+DEBUG_LITE	life.cpp	/^#define DEBUG_LITE /;"	d	file:
+DEBUG_PRINT	life.cpp	/^#define DEBUG_PRINT(/;"	d	file:
+DEBUG_PRINT_LITE	life.cpp	/^#define DEBUG_PRINT_LITE(/;"	d	file:
+DEBUG_PRINT_LITE_PROCESS	life.cpp	/^#define DEBUG_PRINT_LITE_PROCESS(/;"	d	file:
+DEBUG_PRINT_PROCESS	life.cpp	/^#define DEBUG_PRINT_PROCESS(/;"	d	file:
+DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
+DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
+DEC	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
+DEC	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
+DISP	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^#define DISP /;"	d
+EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+EQUALS	cmake-build-debug/Makefile	/^EQUALS = =$/;"	m
+HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
+HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+HEX	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
+HEX	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
+ID_VOID_MAIN	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
+MPI_OBJ	others/Game-Of-Life/Makefile	/^MPI_OBJ := $(filter .\/mpi_openmp\/%.o, $(ALL_OBJ))$/;"	m
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
+Program	life.cpp	/^    Program(int argc, char *argv[]) {$/;"	f	class:Program
+Program	life.cpp	/^class Program {$/;"	c	file:
+RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	cmake-build-debug/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	cmake-build-debug/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHIFT_COL	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^#define SHIFT_COL /;"	d
+SHIFT_ROW	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^#define SHIFT_ROW /;"	d
+SIMULATE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_ID /;"	d	file:
+SIMULATE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
+SIMULATE_ID	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_ID /;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_MAJOR /;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_MAJOR /;"	d	file:
+SIMULATE_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_MAJOR /;"	d	file:
+SIMULATE_VERSION_MAJOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_MAJOR /;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_MINOR /;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_MINOR /;"	d	file:
+SIMULATE_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_MINOR /;"	d	file:
+SIMULATE_VERSION_MINOR	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_MINOR /;"	d	file:
+SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
+SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
+SIMULATE_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
+SIMULATE_VERSION_PATCH	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
+STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
+STRINGIFY_HELPER	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
+STRINGIFY_HELPER	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
+SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	cmake-build-debug/Makefile	/^SUFFIXES =$/;"	m
+__COMMON_IO_UTILS__	others/Game-Of-Life/common/headers/io_utils.h	/^	#define __COMMON_IO_UTILS__$/;"	d
+__COMMON_REPORT_UTILS__	others/Game-Of-Life/common/headers/report_utils.h	/^  #define __COMMON_REPORT_UTILS__$/;"	d
+__COMMON_UTILS__	others/Game-Of-Life/common/headers/utils.h	/^  #define __COMMON_UTILS__$/;"	d
+__GAME_UTILS__	others/Game-Of-Life/mpi_openmp/headers/game_utils.h	/^  #define __GAME_UTILS__$/;"	d
+__report	others/Game-Of-Life/common/src/report_utils.c	/^static void __report(const char *tag, const char *fmt, va_list args) {$/;"	f	file:
+__usage	others/Game-Of-Life/common/src/io_utils.c	/^void __usage() {$/;"	f	file:
+allocate_memory	others/Game-Of-Life/common/src/utils.c	/^char** allocate_memory(int rows, int columns) {$/;"	f
+argparse	others/Game-Of-Life/misc/vizualize.py	/^import argparse$/;"	i
+build	make.sh	/^function build() {$/;"	f
+build_mpi	make.sh	/^function build_mpi() {$/;"	f
+build_mpi	test.sh	/^function build_mpi() {$/;"	f
+calculate_inner_gen	others/Game-Of-Life/mpi_openmp/src/game_utils.c	/^int calculate_inner_gen(char** prev_gen, char** next_gen, subgrid_info* subgrid) {$/;"	f
+calculate_outter_gen	others/Game-Of-Life/mpi_openmp/src/game_utils.c	/^int calculate_outter_gen(char** prev_gen, char** next_gen, subgrid_info* subgrid) {$/;"	f
+clean	make.sh	/^function clean() {$/;"	f
+cols	others/Game-Of-Life/common/headers/utils.h	/^    int cols;$/;"	m	struct:subgrid
+compute_neighbors	others/Game-Of-Life/mpi_openmp/src/mpi_utils.c	/^void compute_neighbors(MPI_Comm comm2D, process_neighbors* p) {$/;"	f
+const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
+const	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
+copy_grid	life.cpp	/^void copy_grid(std::vector<std::vector<int>> &from, std::vector<std::vector<int>> &to) {$/;"	f
+delete_local_environs	make.sh	/^function delete_local_environs() {$/;"	f
+die	life.cpp	/^void die() {$/;"	f
+die	make.sh	/^function die() {$/;"	f
+die	others/Game-Of-Life/common/src/report_utils.c	/^void die(const char *fmt, ...) {$/;"	f
+die	test.sh	/^function die() {$/;"	f
+div_factor	others/Game-Of-Life/common/headers/utils.h	/^    int div_factor;$/;"	m	struct:subgrid
+east	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int east;$/;"	m	struct:neighbors
+exec_game_rules	others/Game-Of-Life/mpi_openmp/src/game_utils.c	/^int exec_game_rules(char** prev_gen, char** next_gen, int i, int j, int alive_neighbours) {$/;"	f
+file_exists	others/Game-Of-Life/common/src/utils.c	/^bool file_exists(const char* restrict path) {$/;"	f
+filename	life.cpp	/^    char *filename = nullptr;$/;"	m	class:Program	file:
+get_end_row	life.cpp	/^int get_end_row(int process_id, int nrows, int process_count) {$/;"	f
+get_grid_from_file	life.cpp	/^std::vector<std::vector<int>> *get_grid_from_file(char *filename) {$/;"	f
+get_start_row	life.cpp	/^int get_start_row(int process_id, int nrows, int process_count) {$/;"	f
+grid	life.cpp	/^    std::vector<std::vector<int>> *grid = nullptr;$/;"	m	class:Program	file:
+help	make.sh	/^function help() {$/;"	f
+imageio	others/Game-Of-Life/misc/vizualize.py	/^import imageio$/;"	i
+info_arch	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_cray	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_cray	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_cray	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_dialect_default =$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_language_dialect_default	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_dialect_default =$/;"	v
+info_language_dialect_default	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_platform	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+info_version	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+info_version_internal	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v
+input_file	others/Game-Of-Life/common/headers/io_utils.h	/^    char* input_file;$/;"	m	struct:program_options
+loops	others/Game-Of-Life/common/headers/io_utils.h	/^    int loops;$/;"	m	struct:program_options
+main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/FindMPI/test_mpi.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	cmake-build-debug/CMakeFiles/FindMPI/test_mpi.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	life.cpp	/^int main(int argc, char *argv[]) {$/;"	f
+main	make.sh	/^function main() {$/;"	f
+main	others/Game-Of-Life/misc/vizualize.py	/^def main():$/;"	f
+main	others/Game-Of-Life/mpi_openmp/src/main.c	/^int main(int argc, char** argv) {$/;"	f
+make_args_parser	others/Game-Of-Life/misc/vizualize.py	/^def make_args_parser():$/;"	f
+matplotlib	others/Game-Of-Life/misc/vizualize.py	/^import matplotlib.pyplot as plt$/;"	i
+mpiver_str	build/CMakeFiles/FindMPI/test_mpi.cpp	/^const char mpiver_str[] = { 'I', 'N',$/;"	v
+mpiver_str	cmake-build-debug/CMakeFiles/FindMPI/test_mpi.cpp	/^const char mpiver_str[] = { 'I', 'N',$/;"	v
+neighbors	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^typedef struct neighbors {$/;"	s
+north	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int north;$/;"	m	struct:neighbors
+north_east	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int north_east;$/;"	m	struct:neighbors
+north_west	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int north_west;$/;"	m	struct:neighbors
+np	others/Game-Of-Life/misc/vizualize.py	/^import numpy as np$/;"	i
+options	others/Game-Of-Life/common/src/io_utils.c	/^program_options options;$/;"	v
+options_spec	others/Game-Of-Life/common/headers/io_utils.h	/^  static struct option options_spec[] = {$/;"	v	typeref:struct:option
+os	others/Game-Of-Life/misc/vizualize.py	/^import os$/;"	i
+output_file	others/Game-Of-Life/common/headers/io_utils.h	/^		char* output_file;$/;"	m	struct:program_options
+parallel_read	others/Game-Of-Life/mpi_openmp/src/mpi_utils.c	/^char** parallel_read(const char* input_file, int rank, int size, subgrid_info* subgrid) {$/;"	f
+parallel_write	others/Game-Of-Life/mpi_openmp/src/mpi_utils.c	/^void parallel_write(const char* output_file, int rank, int no_processes, int size, subgrid_info* subgrid, char** local_grid) {$/;"	f
+parse_command_line_arguments	others/Game-Of-Life/common/src/io_utils.c	/^void parse_command_line_arguments(int argc, char *argv[]) {$/;"	f
+plt	others/Game-Of-Life/misc/vizualize.py	/^import matplotlib.pyplot as plt$/;"	i
+print_args	others/Game-Of-Life/misc/vizualize.py	/^def print_args(args):$/;"	f
+print_grid	life.cpp	/^void print_grid(Program *program) {$/;"	f
+process_id	life.cpp	/^    int process_id = -1;$/;"	m	class:Program	file:
+process_neighbors	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^} process_neighbors;$/;"	t	typeref:struct:neighbors
+processes	life.cpp	/^    int processes = -1;$/;"	m	class:Program	file:
+program_options	others/Game-Of-Life/common/headers/io_utils.h	/^  typedef struct program_options {$/;"	s
+program_options	others/Game-Of-Life/common/headers/io_utils.h	/^  } program_options;$/;"	t	typeref:struct:program_options
+pull_environs	make.sh	/^function pull_environs() {$/;"	f
+push_environs	make.sh	/^function push_environs() {$/;"	f
+qnxnto	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+reduce	others/Game-Of-Life/common/headers/io_utils.h	/^		bool reduce;$/;"	m	struct:program_options
+report_error	others/Game-Of-Life/common/src/report_utils.c	/^void report_error(const char *fmt, ...) {$/;"	f
+report_warning	others/Game-Of-Life/common/src/report_utils.c	/^void report_warning(const char *fmt, ...) {$/;"	f
+rows	others/Game-Of-Life/common/headers/utils.h	/^    int rows;$/;"	m	struct:subgrid
+rsync_to_server	make.sh	/^function rsync_to_server() {$/;"	f
+run_game	others/Game-Of-Life/mpi_openmp/src/mpi_utils.c	/^void run_game(char** local_grid, int rank, int no_processes,$/;"	f
+run_mpi	make.sh	/^function run_mpi() {$/;"	f
+run_mpi	test.sh	/^function run_mpi() {$/;"	f
+run_simulation	life.cpp	/^void run_simulation(Program *program) {$/;"	f
+size	others/Game-Of-Life/common/headers/io_utils.h	/^		int size;$/;"	m	struct:program_options
+south	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int south;$/;"	m	struct:neighbors
+south_east	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int south_east;$/;"	m	struct:neighbors
+south_west	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int south_west;$/;"	m	struct:neighbors
+split_grid	others/Game-Of-Life/mpi_openmp/src/mpi_utils.c	/^void split_grid(int rank, int num_processes, int size, subgrid_info* subgrid) {$/;"	f
+steps	life.cpp	/^    int steps = 0;$/;"	m	class:Program	file:
+str_to_ui64_with_end_ptr	others/Game-Of-Life/common/src/utils.c	/^bool str_to_ui64_with_end_ptr(const char* source, uint64_t* destination, char** end_ptr) {$/;"	f
+str_to_uint64	others/Game-Of-Life/common/src/utils.c	/^bool str_to_uint64(const char* source, uint64_t* destination) {$/;"	f
+subgrid	others/Game-Of-Life/common/headers/utils.h	/^  typedef struct subgrid {$/;"	s
+subgrid_info	others/Game-Of-Life/common/headers/utils.h	/^  } subgrid_info;$/;"	t	typeref:struct:subgrid
+update_cell_state	life.cpp	/^void update_cell_state(Program *program, int row, int col, std::vector<std::vector<int>> &next_grid) {$/;"	f
+usage	make.sh	/^function usage() {$/;"	f
+valgrind_mpi	make.sh	/^function valgrind_mpi() {$/;"	f
+volatile	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
+volatile	cmake-build-debug/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
+west	others/Game-Of-Life/mpi_openmp/headers/mpi_utils.h	/^  int west;$/;"	m	struct:neighbors
